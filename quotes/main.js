@@ -1,19 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
     let quotes = [];
 
-    // Fetch and display quotes
+    // fetch and display quotes
     fetch("quotes.json")
     .then(response => response.json())
     .then(data => {
         quotes = data.quotes;
-        displayQuotes(quotes);
+        display_quotes(quotes);
     })
     .catch(error => {
         console.error("Error fetching JSON file", error);
     });
 
-    // ASCII art to be added
-    const glitchArt = `
+    const ascii_art = `
 　　　　　　　　　　．：　　　　　　　　　　　　　　　　　　　　　　　　：　　　　　　　　　　
 　　　　　　　７　　．Ｂ：　　　　　　　　　　　　　　　　　　　　　　７Ｂ　　：ｒ　　　　　　
 　　　　　　Ｘ７　　　ＢＢ．　　　　　　　　　　　　　　　　　　　　ｒＢＢ　　　Ｓｉ　　　　　
@@ -28,13 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
 　　　　　           .　　　　　　　　 　　　　ＸＸＸＸＸＸ　　　　　　　　　　　.　　　　　　　　　　　　
     `;
 
-    // Check if the glitch-art element exists and apply the glitch text
-    const glitchArtElement = document.getElementById("glitch-art");
-    if (glitchArtElement) {
-        glitchArtElement.textContent = glitchArt;
+    const ascii_art_element = document.getElementById("glitch-art");
+    if (ascii_art_element) {
+        ascii_art_element.textContent = ascii_art;
     }
 
-    // Character map for text normalization
+    // shoutout chatgpt for typing (most) of this out, I had to do half of them :despair:
     const character_map = {
         '𝐀': 'A', '𝐁': 'B', '𝐂': 'C', '𝐃': 'D', '𝐄': 'E', '𝐅': 'F', '𝐆': 'G', '𝐇': 'H', '𝐈': 'I', '𝐉': 'J', '𝐊': 'K', '𝐋': 'L',
         '𝐌': 'M', '𝐍': 'N', '𝐎': 'O', '𝐏': 'P', '𝐐': 'Q', '𝐑': 'R', '𝐒': 'S', '𝐓': 'T', '𝐔': 'U', '𝐕': 'V', '𝐖': 'W', '𝐗': 'X',
@@ -83,47 +81,47 @@ document.addEventListener("DOMContentLoaded", () => {
         '𝙖': 'a', '𝙗': 'b', '𝙘': 'c', '𝙙': 'd', '𝙚': 'e', '𝙛': 'f', '𝙜': 'g', '𝙝': 'h', '𝙞': 'i', '𝙟': 'j', '𝙠': 'k', '𝙡': 'l',
         '𝙢': 'm', '𝙣': 'n', '𝙤': 'o', '𝙥': 'p', '𝙦': 'q', '𝙧': 'r', '𝙨': 's', '𝙩': 't', '𝙪': 'u', '𝙫': 'v', '𝙬': 'w', '𝙭': 'x',
         '𝙮': 'y', '𝙯': 'z',
+
+        '𝚊': 'a', '𝚋': 'b', '𝚌': 'c', '𝚍': 'd', '𝚎': 'e', '𝚏': 'f', '𝚐': 'g', '𝚑': 'h', '𝚒': 'i', '𝚓': 'j', '𝚔': 'k', '𝚕': 'l', 
+        '𝚖': 'm', '𝚗': 'n', '𝚘': 'o', '𝚙': 'p', '𝚚': 'q', '𝚛': 'r', '𝚜': 's', '𝚝': 't', '𝚞': 'u', '𝚟': 'v', '𝚠': 'w', '𝚡': 'x', 
+        '𝚢': 'y', '𝚣': 'z',
     
         '０': '0', '１': '1', '２': '2', '３': '3', '４': '4', '５': '5', '６': '6', '７': '7', '８': '8', '９': '9',
     
         '𝟘': '0', '𝟙': '1', '𝟚': '2', '𝟛': '3', '𝟜': '4', '𝟝': '5', '𝟞': '6', '𝟟': '7', '𝟠': '8', '𝟡': '9',
     
-        // fullwidth space to normal space
-        '　': ' ',
-    
-        //literally only for one retarded ass quote but whatever
-        '  ': ' ', '   ': ' '
+        '　': ' ', '  ': ' ', '   ': ' '
     };
     function convert(input) {
         const pattern = new RegExp(Object.keys(character_map).join('|'), 'g');
         return input.replace(pattern, char => character_map[char] || char);
     }
 
-    function normalizeText(text) {
+    function normalize_text(text) {
         return convert(text).toLowerCase();
     }
 
-    function displayQuotes(quotesToDisplay) {
-        const contentDiv = document.getElementById("quotez");
-        if (contentDiv) {
-            contentDiv.innerHTML = "";
-            quotesToDisplay.forEach(quote => {
+    function display_quotes(quotes_to_display) {
+        const content_div = document.getElementById("quotes");
+        if (content_div) {
+            content_div.innerHTML = "";
+            quotes_to_display.forEach(quote => {
                 const div = document.createElement("div");
                 div.className = "quote-container";
                 div.textContent = quote;
-                contentDiv.appendChild(div);
+                content_div.appendChild(div);
             });
         }
     }
 
-    function filterQuotes() {
-        const searchTerm = normalizeText(document.getElementById("search-input").value);
-        const filteredQuotes = quotes.filter(quote => normalizeText(quote).includes(searchTerm));
-        displayQuotes(filteredQuotes);
+    function filter_quotes() {
+        const search_term = normalize_text(document.getElementById("search-input").value);
+        const filtered_quotes = quotes.filter(quote => normalize_text(quote).includes(search_term));
+        display_quotes(filtered_quotes);
     }
 
-    const searchInput = document.getElementById("search-input");
-    if (searchInput) {
-        searchInput.addEventListener("input", filterQuotes);
+    const search_input = document.getElementById("search-input");
+    if (search_input) {
+        search_input.addEventListener("input", filter_quotes);
     }
 });

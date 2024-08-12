@@ -1,0 +1,15 @@
+{
+  "name": "lifehackbit.ch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "build:css": "npx tailwindcss -i ./src/tailwind.css -o ./dist/output.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.9"
+  }
+}
