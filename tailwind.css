@@ -1,0 +1,99 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+    .glitch {
+        @apply relative text-white overflow-hidden;
+        font-size: calc(0.4vw + 0.4vh);
+        letter-spacing: 1px;
+        line-height: 1.2;
+        text-shadow: 
+            0 0 5px rgba(255,255,255,0.7),
+            0 0 10px rgba(255,255,255,0.5),
+            0 0 15px rgba(255,255,255,0.3);
+        animation: glitch-anim 0.7s infinite, color-change 0.7s infinite alternate-reverse;
+    }
+
+    .glitch::before,
+    .glitch::after {
+        @apply absolute top-0 left-0 w-full h-full overflow-hidden;
+        content: attr(data-text);
+        clip: rect(0, 0, 0, 0);
+        color: #fff;
+    }
+
+    .glitch::before {
+        animation: glitch-anim-before 0.7s infinite, color-change 0.7s infinite alternate-reverse;
+    }
+
+    .glitch::after {
+        animation: glitch-anim-after 0.7s infinite, color-change 0.7s infinite alternate-reverse;
+        z-index: 2;
+    }
+
+    @keyframes glitch-anim {
+        0% { transform: translate(0, 0); }
+        20% { transform: translate(-5px, -5px); }
+        40% { transform: translate(5px, 5px); }
+        60% { transform: translate(-5px, 5px); }
+        80% { transform: translate(5px, -5px); }
+        100% { transform: translate(0, 0); }
+    }
+
+    @keyframes glitch-anim-before {
+        0% { clip: rect(0, 100%, 0, 0); }
+        20% { clip: rect(0, 100%, 20%, 0); }
+        40% { clip: rect(20%, 100%, 40%, 0); }
+        60% { clip: rect(40%, 100%, 60%, 0); }
+        80% { clip: rect(60%, 100%, 80%, 0); }
+        100% { clip: rect(0, 100%, 0, 0); }
+    }
+
+    @keyframes glitch-anim-after {
+        0% { clip: rect(0, 0, 0, 0); }
+        20% { clip: rect(0, 100%, 20%, 0); }
+        40% { clip: rect(20%, 100%, 40%, 0); }
+        60% { clip: rect(40%, 100%, 60%, 0); }
+        80% { clip: rect(60%, 100%, 80%, 0); }
+        100% { clip: rect(0, 100%, 0, 0); }
+    }
+
+    @keyframes color-change {
+        0% { color: #fff; }
+        25% { color: rgb(163, 163, 163); }
+        50% { color: rgb(163, 163, 163); }
+        100% { color: #fff; }
+    }
+
+    @keyframes scrollBackground {
+        from {
+            transform: translate(-1%, -1%);
+        }
+        to {
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    body::before {
+        @apply absolute top-0 left-0 w-[200%] h-[200%] bg-black z-[-1] overflow-hidden;
+        content: '';
+        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"%3E%3Ctext x="50%25" y="50%25" font-size="40" text-anchor="middle" fill="white" dominant-baseline="middle" font-family="monospace" transform="rotate(45 100 100)"%3E(◣_◢)%3C/text%3E%3C/svg%3E');
+        background-size: 150px 150px;
+        background-repeat: repeat;
+        filter: blur(4px);
+        animation: scrollBackground 100s linear infinite;
+    }
+
+    .ascii-container {
+        @apply whitespace-pre inline-block text-center relative z-[1] text-[1.5vh];
+    }
+
+    a {
+        @apply mt-[5px] inline-block py-[5px] px-[15px] text-base text-[rgb(148,148,148)] bg-[#333333] opacity-70 border-none rounded text-center no-underline cursor-pointer transition-all duration-200 ease-in-out outline-[1px] outline-black;
+    }
+
+    a:hover {
+        @apply bg-[#6e6e6e] opacity-100;
+    }
+}

@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "build:css": "npx tailwindcss -i ./src/tailwind.css -o ./dist/output.css --minify"
+    "tailwind": "npx tailwindcss -i ./tailwind.css -o ./src/style.css --minify",
+    "tailwind:dev": "npx tailwindcss -i ./tailwind.css -o ./src/style.css --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "tailwindcss": "^3.4.9"
+    "tailwindcss": "^3.4.10"
   }
 }

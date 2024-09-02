@@ -9,30 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
         display_quotes(quotes);
     })
     .catch(error => {
-        console.error("Error fetching JSON file", error);
+        console.error("Error fetching quotes:", error);
     });
 
-    const ascii_art = `
-　　　　　　　　　　．：　　　　　　　　　　　　　　　　　　　　　　　　：　　　　　　　　　　
-　　　　　　　７　　．Ｂ：　　　　　　　　　　　　　　　　　　　　　　７Ｂ　　：ｒ　　　　　　
-　　　　　　Ｘ７　　　ＢＢ．　　　　　　　　　　　　　　　　　　　　ｒＢＢ　　　Ｓｉ　　　　　
-　　　　　：Ｂ　　　　ＢＢＢ：　　　　　　　　　　　　　　　　　　７ＢＢＢ　　　　Ｂ　　　　　
-　　　　　８７　　　　ＢＢＢＢ：　　　　　　　　　　　　　　　　７ＢＢＢＢ　　　　Ｍ７　　　　
-　　　　　Ｂ：　　　　ＢＢＢＢＢｉ　　　　　　　　　　　　　　７ＢＢＢＢＢ　　　　ＸＸ　　　　
-　　　　　Ｂ．　　　　ＢＢＢＢＢＢ７　　　　　　　　　　　　２ＢＢＢＢＢＢ　　　　Ｓ０　　　　
-　　　　　Ｂ：　　　　ＢＢＢＢＢＢＢＸ　　　　　　　　　　ＭＢＢＢＢＢＢＢ　　　　Ｘ２　　　　
-　　　　　Ｓ２　　　　ＢＢＢＢＢＢＢＢ７　　　　　　　　ＳＢＢＢＢＢＢＢＭ　　　　Ｍ：　　　　
-　　　　　　Ｍ　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　：８　　　　　
-　　　　　　ｉＭ　　　　　　　　　　　　　ＸＸＸＸＸＸＸ　　　　　　　　　　　　．０　　　　　　
-　　　　　           .　　　　　　　　 　　　　ＸＸＸＸＸＸ　　　　　　　　　　　.　　　　　　　　　　　　
-    `;
-
-    const ascii_art_element = document.getElementById("glitch-art");
-    if (ascii_art_element) {
-        ascii_art_element.textContent = ascii_art;
-    }
-
-    // shoutout chatgpt for typing (most) of this out, I had to do half of them :despair:
     const character_map = {
         '𝐀': 'A', '𝐁': 'B', '𝐂': 'C', '𝐃': 'D', '𝐄': 'E', '𝐅': 'F', '𝐆': 'G', '𝐇': 'H', '𝐈': 'I', '𝐉': 'J', '𝐊': 'K', '𝐋': 'L',
         '𝐌': 'M', '𝐍': 'N', '𝐎': 'O', '𝐏': 'P', '𝐐': 'Q', '𝐑': 'R', '𝐒': 'S', '𝐓': 'T', '𝐔': 'U', '𝐕': 'V', '𝐖': 'W', '𝐗': 'X',
@@ -85,6 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
         '𝚊': 'a', '𝚋': 'b', '𝚌': 'c', '𝚍': 'd', '𝚎': 'e', '𝚏': 'f', '𝚐': 'g', '𝚑': 'h', '𝚒': 'i', '𝚓': 'j', '𝚔': 'k', '𝚕': 'l', 
         '𝚖': 'm', '𝚗': 'n', '𝚘': 'o', '𝚙': 'p', '𝚚': 'q', '𝚛': 'r', '𝚜': 's', '𝚝': 't', '𝚞': 'u', '𝚟': 'v', '𝚠': 'w', '𝚡': 'x', 
         '𝚢': 'y', '𝚣': 'z',
+
+        '𝖆': 'a', '𝖇': 'b', '𝖈': 'c', '𝖉': 'd', '𝖊': 'e', '𝖋': 'f', '𝖌': 'g', '𝖍': 'h', '𝖎': 'i', '𝖏': 'j', '𝖐': 'k', '𝖑': 'l',
+        '𝖒': 'm', '𝖓': 'n', '𝖔': 'o', '𝖕': 'p', '𝖖': 'q', '𝖗': 'r', '𝖘': 's', '𝖙': 't', '𝖚': 'u', '𝖛': 'v', '𝖜': 'w', '𝖝': 'x',
+        '𝖞': 'y', '𝖟': 'z',
+    
+        '𝔞': 'a', '𝔟': 'b', '𝔠': 'c', '𝔡': 'd', '𝔢': 'e', '𝔣': 'f', '𝔤': 'g', '𝔥': 'h', '𝔦': 'i', '𝔧': 'j', '𝔨': 'k', '𝔩': 'l',
+        '𝔪': 'm', '𝔫': 'n', '𝔬': 'o', '𝔭': 'p', '𝔮': 'q', '𝔯': 'r', '𝔰': 's', '𝔱': 't', '𝔲': 'u', '𝔳': 'v', '𝔴': 'w', '𝔵': 'x',
+        '𝔶': 'y', '𝔷': 'z',
     
         '０': '0', '１': '1', '２': '2', '３': '3', '４': '4', '５': '5', '６': '6', '７': '7', '８': '8', '９': '9',
     
@@ -92,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
         '　': ' ', '  ': ' ', '   ': ' '
     };
+    
     function convert(input) {
         const pattern = new RegExp(Object.keys(character_map).join('|'), 'g');
         return input.replace(pattern, char => character_map[char] || char);
@@ -102,26 +90,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function display_quotes(quotes_to_display) {
-        const content_div = document.getElementById("quotes");
-        if (content_div) {
-            content_div.innerHTML = "";
-            quotes_to_display.forEach(quote => {
-                const div = document.createElement("div");
-                div.className = "quote-container";
-                div.textContent = quote;
-                content_div.appendChild(div);
-            });
+        const quotes_container = document.getElementById("quotes");
+        quotes_container.innerHTML = "";
+        quotes_to_display.forEach((quote, index) => {
+            const quote_container = document.createElement("div");
+            quote_container.className = "quote-container";
+            quote_container.textContent = quote;
+            quote_container.setAttribute("data-index", index);
+            quote_container.addEventListener("click", copy_quote);
+            quotes_container.appendChild(quote_container);
+        });
+        update_quote_count(quotes_to_display.length);
+    }
+
+    function update_quote_count(count) {
+        const quote_count_element = document.getElementById("quote-count");
+        if (quote_count_element) {
+            quote_count_element.textContent = count;
         }
     }
 
+    function copy_quote(event) {
+        const quote_text = event.target.textContent;
+        navigator.clipboard.writeText(quote_text).then(() => {
+            const original_background = event.target.style.backgroundColor;
+            event.target.style.backgroundColor = "rgba(0, 255, 0, 0.2)";
+            setTimeout(() => {
+                event.target.style.backgroundColor = original_background;
+            }, 500);
+        }).catch(error => {
+            console.error("Failed to copy text: ", error);
+        });
+    }
+
     function filter_quotes() {
-        const search_term = normalize_text(document.getElementById("search-input").value);
-        const filtered_quotes = quotes.filter(quote => normalize_text(quote).includes(search_term));
+        const filter_term = normalize_text(document.getElementById("filter-input").value);
+        const filtered_quotes = quotes.filter(quote => normalize_text(quote).includes(filter_term));
         display_quotes(filtered_quotes);
     }
 
-    const search_input = document.getElementById("search-input");
-    if (search_input) {
-        search_input.addEventListener("input", filter_quotes);
+    const filter_input = document.getElementById("filter-input");
+    if (filter_input) {
+        filter_input.addEventListener("input", filter_quotes);
     }
 });

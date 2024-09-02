@@ -1,5 +1,4 @@
-const ascii_art = `
-　　　　　　　　　　．：　　　　　　　　　　　　　　　　　　　　　　　　：　　　　　　　　　　　
+const ascii_art = `　　　　　　　　　　．：　　　　　　　　　　　　　　　　　　　　　　　　：　　　　　　　　　　　
 　　　　　　　７　　．Ｂ：　　　　　　　　　　　　　　　　　　　　　　７Ｂ　　：ｒ　　　　　　　
 　　　　　　Ｘ７　　　ＢＢ．　　　　　　　　　　　　　　　　　　　　ｒＢＢ　　　Ｓｉ　　　　　　
 　　　　　：Ｂ　　　　ＢＢＢ：　　　　　　　　　　　　　　　　　　７ＢＢＢ　　　　Ｂ　　　　　　
