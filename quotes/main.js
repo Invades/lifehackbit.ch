@@ -91,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             return char;
         });
-
     }
 
     function normalize_text(text) {
