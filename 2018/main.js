@@ -15,7 +15,7 @@ fetch('dlls.json')
     .catch(error => console.error('Error loading JSON:', error));
 
 function update_file_count(count) {
-    file_count_element.textContent = `Files: ${count}`;
+    file_count_element.textContent = `DLLs: ${count}`;
 }
 
 function create_file_list() {
