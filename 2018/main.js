@@ -15,7 +15,7 @@ fetch('dlls.json')
     .catch(error => console.error('Error loading JSON:', error));
 
 function update_file_count(count) {
-    file_count_element.textContent = `DLLs: ${count}`;
+    file_count_element.textContent = `𝓗𝓸𝓸𝓴𝓪𝓱𝓼: ${count}`;
 }
 
 function create_file_list() {
@@ -151,5 +151,5 @@ function close_custom_alert(confirmed) {
 }
 
 function display_name(link) {
-    return link.replace('.dll', '');
+    return link.replace('.dll', '').replace('.zip', '').replace('.exe', '');
 }
