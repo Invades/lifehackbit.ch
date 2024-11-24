@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../src/style.css">
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
 	<meta name="description" content="LIFEEEEHAAAACK BITCH!!! (◣_◢)">
     <meta property="og:image" content="https://raw.githubusercontent.com/Invades/lifehackbit.ch/main/assets/lifehackbitch.png">
@@ -11,12 +12,17 @@
     <title>LIFEEEHAAACK BITCH!!!</title>
 </head>
 <body>
-    <a href="/">
-        <div class="glitch">
-            <pre id="ascii-art"></pre>
-        </div>  
+    <div class="fixed top-2.5 right-2.5 p-2 bg-rgba(255, 255, 255, 0.05) border border-white border-opacity-10 text-[rgba(255,255,255,0.5)] rounded backdrop-blur text-[0.9em] z-50">
+        Report issues and suggest additions <a class="underline text-white transition-all duration-300 ease-in-out text-opacity-60 hover:text-opacity-80" href="https://github.com/Invades/lifehackbit.ch/issues" target="_blank">here</a>
+    </div>
+    <a href="/" class="text-decoration-none">
+        <div class="ascii-container">
+            <div class="glitch" id="ascii-art-small"></div>
+        </div>
     </a>
-    <input id="filter-input" placeholder="Filter" autocomplete="off">
+    <div class="w-full max-w-xl">
+        <input type="text" id="filter-input" class="w-full max-w-xl bg-rgba(255, 255, 255, 0.05) border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded backdrop-blur text-[0.9em] z-50 mt-5 px-2 py-1 opacity-70 placeholder:text-[rgba(255,255,255,0.5)] mb-5" placeholder="Filter" autocomplete="off">
+    </div>
     <div id="quote-counter">Quotes: <span id="quote-count">0</span></div>
     <div id="quotes"></div>
     <script type="text/javascript" src="../src/ascii.js"></script>

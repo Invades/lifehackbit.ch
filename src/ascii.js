@@ -11,4 +11,7 @@ const ascii_art = `　　　　　　　　　　．：　　　　　　　　�
 　　　　　　ｉＭ　　　　　　　　　　　　　ＸＸＸＸＸＸＸ　　　　　　　　　　　　．０　　　　　　
 .　 　　　　　　　 　　　　ＸＸＸＸＸＸ　　　　　　　　　　　.　`;
 
-document.getElementById('ascii-art').textContent = ascii_art;
+const asciiElement = document.getElementById('ascii-art') || document.getElementById('ascii-art-small');
+if (asciiElement) {
+    asciiElement.textContent = ascii_art;
+}
