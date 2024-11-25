@@ -13,6 +13,17 @@ const config = {
 		paths: {
 			base: process.env.NODE_ENV === 'production' ? '' : '',
 		},
+		prerender: {
+			handleHttpError: ({ path, referrer, message }) => {
+				// Ignore static assets
+				if (path.startsWith('/static')) {
+					return;
+				}
+				
+				// Otherwise, fail the build
+				throw new Error(message);
+			}
+		}
 	},
 	preprocess: vitePreprocess(),
 	alias: {
