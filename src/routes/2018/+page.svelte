@@ -1,38 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-    <link rel="stylesheet" href="/src/style.css">
-    <link rel="stylesheet" href="temp.css">
-    <meta name="darkreader-lock">
-    <meta name="description" content="LIFEEEEHAAAACK BITCH!!! (◣_◢)">
-    <meta property="og:image" content="https://raw.githubusercontent.com/Invades/lifehackbit.ch/main/assets/lifehackbitch.png">
-    <meta name="keywords" content="lifehack, lifehacker, csgo, cs2, cheat, cheater, cheaters, LIFEHACK BITCH, LIFEEEEHAAAACK BITCH!!! (◣_◢), skeet.cc, gamesense.pub, neverlose.cc, hvh, skeet invite, fatality.win, fatality, neverlose, skeet, fatality invite, neverlose invite, skibid toilet, family guy funny moments">
-    <title>LIFEEEHAAACK BITCH!!!</title>
-</head>
-<body class="font-mono text-[1.5vh] overflow-auto text-white min-h-screen flex flex-col justify-center items-center select-none">
+<script>
+    import { onMount } from 'svelte';
+    import load_2018 from '$lib/2018';
+
+    onMount(() => {
+        load_2018();
+    });
+</script>
+
+<div class="font-mono text-[1.5vh] overflow-auto text-white min-h-screen flex flex-col justify-center items-center select-none">
     <div class="fixed top-2.5 right-2.5 p-2 bg-rgba(255, 255, 255, 0.05) border border-white border-opacity-10 text-[rgba(255,255,255,0.5)] rounded backdrop-blur text-[0.9em] z-50">
         Report issues and suggest additions <a class="underline text-white transition-all duration-300 ease-in-out text-opacity-60 hover:text-opacity-80" href="https://github.com/Invades/lifehackbit.ch/issues" target="_blank">here</a>
     </div>
-    <a href="/" class="text-decoration-none">
+    <a href="/" class="text-decoration-none" aria-label="Home">
         <div class="ascii-container">
             <div class="glitch" id="ascii-art-small"></div>
         </div>
     </a>
     
-    <div class="flex flex-col items-center text-center">
+    <div class="mt-1 flex flex-col items-center text-center">
         <div class="w-full max-w-xl">
-            <input type="text" id="filter-input" class="text-sm w-full max-w-xl bg-[rgba(255,255,255,0.05)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded backdrop-blur text-[0.9em] z-50 mt-1 px-2 py-2 opacity-70 placeholder:text-[rgba(255,255,255,0.5)] mb-2" placeholder="Filter" autocomplete="off">
+            <input type="text" id="filter-input" class="text-sm w-full max-w-xl bg-[rgba(255,255,255,0.05)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded backdrop-blur text-[0.9em] z-50 mt-1 p-2 opacity-70 placeholder:text-[rgba(255,255,255,0.5)] mb-2" placeholder="Filter" autocomplete="off">
         </div>
         <div id="file-count" class="mb-2 border bg-[rgba(255,255,255,0.05)] border-white border-opacity-10 rounded backdrop-blur text-[1em] z-50 px-2 py-1 opacity-70 text-center"></div>
         <div id="file-list-container" class="max-w-xl mb-1 max-h-[57.5vh] h-[57.5vh]">
-            <div id="file-list" class="flex flex-col border bg-[rgba(255,255,255,0.05)] bg-opacity-50 p-2 rounded-lg border-white border-opacity-10 backdrop-blur scrollbar h-full overflow-y-auto"></div>
+            <div id="file-list" class="flex flex-col min-w-[300px] border bg-[rgba(255,255,255,0.05)] bg-opacity-50 p-2 rounded-lg border-white border-opacity-10 backdrop-blur scrollbar h-full overflow-y-auto"></div>
         </div>
         <div id="progress-bar" class="h-[6px] opacity-0 w-full backdrop-blur bg-[rgba(150,150,150,0.5)] border border-white border-opacity-10 rounded-lg transition-opacity duration-300 ease-in-out mb-1"></div>
         <div class="flex items-center text-5xl">
-            <svg onclick="random_select()" class="border border-white border-opacity-10 px-1 py-1 rounded bg-[rgba(80,80,80,0.5)] opacity-50 hover:opacity-100 backdrop-blur transition-all duration-300 ease-in-out hover:text-shadow-[0_0_5px_rgba(255,255,255,0.7)] hover:shadow-[0_0_10px_rgba(255,255,255,0.7)] hover:transform hover:scale-105 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M18 3a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm0 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1m-9.5 9a1.5 1.5 0 0 1 1.493 1.356l.007.154a1.5 1.5 0 0 1-2.993.144L7 15.5A1.5 1.5 0 0 1 8.5 14m7 0a1.5 1.5 0 0 1 1.493 1.356l.007.154a1.5 1.5 0 0 1-2.993.144L14 15.5a1.5 1.5 0 0 1 1.5-1.5M12 10.5a1.5 1.5 0 0 1 1.493 1.356l.007.154a1.5 1.5 0 0 1-2.993.144L10.5 12a1.5 1.5 0 0 1 1.5-1.5M8.5 7a1.5 1.5 0 0 1 1.493 1.356L10 8.51a1.5 1.5 0 0 1-2.993.144L7 8.5A1.5 1.5 0 0 1 8.5 7m7 0a1.5 1.5 0 0 1 1.493 1.356L17 8.51a1.5 1.5 0 0 1-2.993.144L14 8.5A1.5 1.5 0 0 1 15.5 7"/></g></svg>
+            <svg role="button" tabindex="0" id="random-select" class="border border-white border-opacity-10 px-1 py-1 rounded bg-[rgba(80,80,80,0.5)] opacity-50 hover:opacity-100 backdrop-blur transition-all duration-300 ease-in-out hover:text-shadow-[0_0_5px_rgba(255,255,255,0.7)] hover:shadow-[0_0_10px_rgba(255,255,255,0.7)] hover:transform hover:scale-105 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M18 3a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm0 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1m-9.5 9a1.5 1.5 0 0 1 1.493 1.356l.007.154a1.5 1.5 0 0 1-2.993.144L7 15.5A1.5 1.5 0 0 1 8.5 14m7 0a1.5 1.5 0 0 1 1.493 1.356l.007.154a1.5 1.5 0 0 1-2.993.144L14 15.5a1.5 1.5 0 0 1 1.5-1.5M12 10.5a1.5 1.5 0 0 1 1.493 1.356l.007.154a1.5 1.5 0 0 1-2.993.144L10.5 12a1.5 1.5 0 0 1 1.5-1.5M8.5 7a1.5 1.5 0 0 1 1.493 1.356L10 8.51a1.5 1.5 0 0 1-2.993.144L7 8.5A1.5 1.5 0 0 1 8.5 7m7 0a1.5 1.5 0 0 1 1.493 1.356L17 8.51a1.5 1.5 0 0 1-2.993.144L14 8.5A1.5 1.5 0 0 1 15.5 7"/></g></svg>
             <label for="unattended" class="ml-2">
                 <input type="checkbox" id="unattended" name="silent" class="hidden">
                 <svg id="unattended-svg" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" class="border border-white border-opacity-10 cursor-pointer transition-all duration-300 ease-in-out px-1 py-[0.2em] rounded mt-0 bg-[rgba(80,80,80,0.5)] opacity-50 hover:opacity-100 backdrop-blur hover:text-shadow-[0_0_5px_rgba(255,255,255,0.7)] hover:shadow-[0_0_10px_rgba(255,255,255,0.7)] hover:transform hover:scale-105">
@@ -48,12 +43,8 @@
         <p id="confirmation-message"></p>
         <p id="info-text" class="text-sm text-opacity-50 text-white"></p>
         <div class="confirmation-buttons flex justify-center gap-2 pt-6">
-            <button class="rounded transition-all duration-200 inline-block ease-in-out px-3 text-base py-2 hover:text-shadow-[0_0_5px_rgba(255,255,255,0.7)] hover:shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:transform hover:scale-105" onclick="close_confirmation(false)">𝓬𝓪𝓷𝓬𝓮𝓵𝓵</button>
-            <button class="rounded transition-all duration-200 inline-block ease-in-out px-3 text-base py-2 hover:text-shadow-[0_0_5px_rgba(255,255,255,0.7)] hover:shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:transform hover:scale-105" onclick="close_confirmation(true)">𝓭𝓸𝔁𝓷𝓵𝓸𝓪𝓷𝓭</button>
+            <button id="cancel-btn" class="rounded transition-all duration-200 inline-block ease-in-out px-3 text-base py-2 hover:text-shadow-[0_0_5px_rgba(255,255,255,0.7)] hover:shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:transform hover:scale-105">𝓬𝓪𝓷𝓬𝓮𝓵𝓵</button>
+            <button id="confirm-btn" class="rounded transition-all duration-200 inline-block ease-in-out px-3 text-base py-2 hover:text-shadow-[0_0_5px_rgba(255,255,255,0.7)] hover:shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:transform hover:scale-105">𝓭𝓸𝔁𝓷𝓵𝓸𝓪𝓷𝓭</button>
         </div>
     </div>
-
-    <script type="text/javascript" src="main.js"></script>
-    <script type="text/javascript" src="../src/ascii.js"></script>
-</body>
-</html>
+</div>

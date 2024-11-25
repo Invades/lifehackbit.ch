@@ -68,13 +68,13 @@
 
     @keyframes scrollBackground {
         0% {
-            transform: translate(0, 0);
+            transform: translate(-1%, -1%);
         }
         50% {
             transform: translate(-25%, -25%);
         }
         100% {
-            transform: translate(0, 0);
+            transform: translate(1%, 1%);
         }
     }
 
@@ -115,11 +115,11 @@
     }
 
     #button {
-        @apply mt-[5px] inline-block py-[5px] px-[15px] text-base text-[rgb(148,148,148)] bg-[#111111] opacity-70 border-none rounded text-center no-underline cursor-pointer transition-all duration-200 ease-in-out outline-[1px] outline-black backdrop-blur;
+        @apply mt-[5px] inline-block py-[5px] px-[15px] text-base text-[rgb(148,148,148)] bg-[rgba(255,255,255,0.1)] border border-white border-opacity-5 rounded text-center no-underline cursor-pointer transition-all duration-200 ease-in-out backdrop-blur;
     }
 
     #button:hover {
-        @apply bg-[#6e6e6e] opacity-100;
+        @apply bg-[rgba(255,255,255,0.15)] opacity-100;
     }
 
     @layer utilities {
