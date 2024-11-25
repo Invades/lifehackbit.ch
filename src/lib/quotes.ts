@@ -74,7 +74,7 @@ const character_map: CharacterMap = {
 export function init_quotes(): void {
     let quotes: string[] = [];
     let current_filter = '';
-    let current_sort = 'new';
+    let current_sort = 'old';
 
     function sort_quotes(quotes_to_sort: string[]): string[] {
         switch (current_sort) {
