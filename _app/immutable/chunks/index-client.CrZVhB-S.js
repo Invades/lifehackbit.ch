@@ -1,1 +1,0 @@
-import{j as o,A as t,i as c,k as u}from"./runtime.Qm1VnOjs.js";function a(e){throw new Error("lifecycle_outside_component")}function r(e){o===null&&a(),t&&o.l!==null?i(o).m.push(e):c(()=>{const n=u(e);if(typeof n=="function")return n})}function i(e){var n=e.l;return n.u??(n.u={a:[],b:[],m:[]})}export{r as o};
