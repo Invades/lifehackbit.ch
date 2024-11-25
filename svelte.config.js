@@ -5,24 +5,17 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 const config = {
 	kit: {
 		adapter: adapter({
-			fallback: '404.html',
+			pages: 'build',
+			assets: 'build',
+			fallback: 'index.html',
+			precompress: false,
+			strict: true,
 			prerender: {
 				entries: ['*']
 			}
 		}),
 		paths: {
-			base: process.env.NODE_ENV === 'production' ? '' : '',
-		},
-		prerender: {
-			handleHttpError: ({ path, referrer, message }) => {
-				// Ignore static assets
-				if (path.startsWith('/static')) {
-					return;
-				}
-				
-				// Otherwise, fail the build
-				throw new Error(message);
-			}
+			base: process.env.NODE_ENV === 'production' ? '' : ''
 		}
 	},
 	preprocess: vitePreprocess(),
