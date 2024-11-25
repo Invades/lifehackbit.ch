@@ -1,3 +1,19 @@
+<script>
+    import { onMount } from 'svelte';
+    import { goto } from '$app/navigation';
+
+    onMount(() => {
+        const params = new URLSearchParams(window.location.search);
+        const redirect_path = params.get('path');
+        
+        if (redirect_path) {
+            params.delete('path');
+            const new_url = redirect_path + (params.toString() ? '?' + params.toString() : '');
+            goto(new_url);
+        }
+    });
+</script>
+
 <div class="text-white min-h-screen flex flex-col justify-center items-center overflow-hidden select-none">
     <div class="ascii-container font-mono text-lg leading-none">
         <pre id="ascii-art" class="glitch"></pre>

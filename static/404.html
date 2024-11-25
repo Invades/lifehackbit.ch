@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8">
     <script>
-        const segment = window.location.pathname;
-        window.location.href = '/#' + segment;
+        window.location.replace(`/?path=${encodeURIComponent(window.location.pathname)}`);
     </script>
 </head>
 <body>
