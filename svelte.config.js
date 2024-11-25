@@ -5,9 +5,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 const config = {
 	kit: {
 		adapter: adapter({
-			// Fallback page for dynamic routes
-			fallback: 'index.html',
-			// Prerender all pages by default
+			fallback: '404.html',
 			prerender: {
 				entries: ['*']
 			}
