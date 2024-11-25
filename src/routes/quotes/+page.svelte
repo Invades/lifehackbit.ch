@@ -20,8 +20,8 @@
         <div class="m-2 flex gap-2">
             <input type="text" id="filter-input" class="flex-1 text-sm bg-[rgba(255,255,255,0.05)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur text-[0.9em] p-2 opacity-70 placeholder:text-[rgba(255,255,255,0.5)]" placeholder="Filter" autocomplete="off">
             <select id="sort-select" class="text-sm bg-[rgba(255,255,255,0.05)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur text-[0.9em] p-2 opacity-70">
-                <option value="new" class="bg-[rgb(20,20,20)]">New → Old</option>
                 <option value="old" class="bg-[rgb(20,20,20)]">Old → New</option>
+                <option value="new" class="bg-[rgb(20,20,20)]">New → Old</option>
                 <option value="az" class="bg-[rgb(20,20,20)]">A → Z</option>
                 <option value="za" class="bg-[rgb(20,20,20)]">Z → A</option>
             </select>
