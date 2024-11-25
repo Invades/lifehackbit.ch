@@ -1,4 +1,3 @@
-// Define types outside the function
 type CharacterMap = {
     [key: string]: string[];
 };
@@ -74,13 +73,58 @@ const character_map: CharacterMap = {
 
 export function init_quotes(): void {
     let quotes: string[] = [];
+    let current_filter = '';
+    let current_sort = 'new';
 
-    // fetch and display quotes
+    function sort_quotes(quotes_to_sort: string[]): string[] {
+        switch (current_sort) {
+            case 'old':
+                return [...quotes_to_sort];
+            case 'new':
+                return [...quotes_to_sort].reverse();
+            case 'az':
+                return [...quotes_to_sort].sort((a, b) => 
+                    normalize_text(a).localeCompare(normalize_text(b))
+                );
+            case 'za':
+                return [...quotes_to_sort].sort((a, b) => 
+                    normalize_text(b).localeCompare(normalize_text(a))
+                );
+            default:
+                return quotes_to_sort;
+        }
+    }
+
+    function filter_and_sort_quotes(): void {
+        const filter_input = document.getElementById("filter-input");
+        if (!filter_input || !(filter_input instanceof HTMLInputElement)) return;
+        
+        const filter_term = normalize_text(filter_input.value);
+        const filtered_quotes = quotes.filter(quote => 
+            normalize_text(quote).includes(filter_term)
+        );
+        display_quotes(sort_quotes(filtered_quotes));
+    }
+
+    const sort_select = document.getElementById('sort-select');
+    if (sort_select) {
+        sort_select.addEventListener('change', (e) => {
+            const target = e.target as HTMLSelectElement;
+            current_sort = target.value;
+            filter_and_sort_quotes();
+        });
+    }
+
+    const filter_input = document.getElementById("filter-input");
+    if (filter_input) {
+        filter_input.addEventListener("input", filter_and_sort_quotes);
+    }
+
     fetch("/json/quotes.json")
         .then((response: Response) => response.json())
         .then((data: { quotes: string[] }) => {
             quotes = data.quotes;
-            display_quotes(quotes);
+            filter_and_sort_quotes();
         })
         .catch((error: Error) => {
             console.error("Error fetching quotes:", error);
@@ -140,23 +184,8 @@ export function init_quotes(): void {
             console.error("Failed to copy text: ", error);
         });
     }
-    
-    function filter_quotes(): void {
-        const filter_input = document.getElementById("filter-input");
-        if (!filter_input || !(filter_input instanceof HTMLInputElement)) return;
-        
-        const filter_term = normalize_text(filter_input.value);
-        const filtered_quotes = quotes.filter(quote => normalize_text(quote).includes(filter_term));
-        display_quotes(filtered_quotes);
-    }
-
-    const filter_input = document.getElementById("filter-input");
-    if (filter_input) {
-        filter_input.addEventListener("input", filter_quotes);
-    }
 }
 
-// Call the initialization function when the DOM is ready
 if (typeof document !== 'undefined') {
     document.addEventListener("DOMContentLoaded", init_quotes);
 }
