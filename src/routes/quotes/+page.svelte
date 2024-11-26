@@ -7,7 +7,7 @@
     });
 </script>
 
-<div class="font-mono text-[1.5vh] overflow-auto text-white min-h-screen flex flex-col justify-start items-center select-none">
+<div class="font-mono text-[1.5vh] text-white min-h-screen flex flex-col justify-start items-center select-none overflow-x-hidden">
     <div class="fixed top-2.5 right-2.5 p-2 bg-rgba(255, 255, 255, 0.05) border border-white border-opacity-10 text-[rgba(255,255,255,0.5)] rounded backdrop-blur text-[0.9em] z-50">
         Report issues and suggest additions <a class="underline text-white transition-all duration-300 ease-in-out text-opacity-60 hover:text-opacity-80" href="https://github.com/Invades/lifehackbit.ch/issues" target="_blank">here</a>
     </div>
