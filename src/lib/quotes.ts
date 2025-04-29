@@ -1,3 +1,10 @@
+const sort_options = [
+    { value: 'old', label: 'Old->New' },
+    { value: 'new', label: 'New->Old' },
+    { value: 'az', label: 'A->Z' },
+    { value: 'za', label: 'Z->A' }
+];
+
 type CharacterMap = {
     [key: string]: string[];
 };
@@ -106,6 +113,58 @@ export function init_quotes(): void {
         display_quotes(sort_quotes(filtered_quotes));
     }
 
+    function custom_dropdown(): void {
+        const select_element = document.getElementById('sort-select');
+        if (!select_element) return;
+
+        const container = document.createElement('div');
+        container.className = 'sort-container';
+        
+        select_element.style.display = 'none'; 
+        select_element.parentNode?.insertBefore(container, select_element.nextSibling);
+
+        container.innerHTML = `
+            <div class="relative w-full">
+                <button
+                    type="button"
+                    class="dropdown-button w-[100px] text-sm bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur text-[0.9em] p-2 opacity-70 text-center transition-all duration-300"
+                >
+                    ${sort_options.find(opt => opt.value === current_sort)?.label}
+                </button>
+                
+                <div class="dropdown-content hidden absolute right-0 mt-1 w-full bg-[rgba(20,20,20,0.8)] backdrop-blur-md border border-white border-opacity-10 rounded-lg shadow-lg z-50 transition-all duration-300">
+                    ${sort_options.map(option => `
+                        <button
+                            type="button"
+                            data-value="${option.value}"
+                            class="w-full text-center px-4 py-2 text-sm hover:bg-[rgba(255,255,255,0.1)] text-[rgba(255,255,255,0.8)] first:rounded-t-lg last:rounded-b-lg transition-all duration-200 ${current_sort === option.value ? 'bg-[rgba(255,255,255,0.05)]' : ''}"
+                        >
+                            ${option.label}
+                        </button>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        const dropdown_btn = container.querySelector('.dropdown-button');
+        const dropdown_opt = container.querySelectorAll('.dropdown-content button');
+        const dropdown_cnt = container.querySelector('.dropdown-content');
+
+        if (dropdown_cnt) {
+            dropdown_cnt.classList.add('opacity-0', 'scale-95', '-translate-y-2', 'pointer-events-none');
+        }
+
+        dropdown_btn?.addEventListener('click', toggle_dropdown);
+        dropdown_opt.forEach(option => {
+            option.addEventListener('click', (e) => {
+                const value = (e.currentTarget as HTMLButtonElement).dataset.value;
+                if (value) handle_sort_change(value);
+            });
+        });
+
+        document.addEventListener('click', handle_click_outside);
+    }
+
     const sort_select = document.getElementById('sort-select');
     if (sort_select) {
         sort_select.addEventListener('change', (e) => {
@@ -125,6 +184,7 @@ export function init_quotes(): void {
         .then((data: { quotes: string[] }) => {
             quotes = data.quotes;
             filter_and_sort_quotes();
+            custom_dropdown();
         })
         .catch((error: Error) => {
             console.error("Error fetching quotes:", error);
@@ -152,7 +212,7 @@ export function init_quotes(): void {
         quotes_container.innerHTML = "";
         quotes_to_display.forEach((quote, index) => {
             const quote_container = document.createElement("div");
-            quote_container.className = "hover:bg-[rgba(255,255,255,0.1)] cursor-pointer m-2 whitespace-pre-wrap text-center p-2 rounded-lg bg-[rgba(255,255,255,0.05)] border border-white border-opacity-10 backdrop-blur transition-all duration-300 ";
+            quote_container.className = "hover:bg-[rgba(255,255,255,0.1)] cursor-pointer mb-2 whitespace-pre-wrap text-center p-2 rounded-lg bg-[rgba(255,255,255,0.05)] border border-white border-opacity-10 backdrop-blur transition-all duration-300";
             quote_container.textContent = quote;
             quote_container.setAttribute("data-index", index.toString());
             quote_container.addEventListener("click", copy_quote);
@@ -183,6 +243,65 @@ export function init_quotes(): void {
         }).catch(error => {
             console.error("Failed to copy text: ", error);
         });
+    }
+
+    function toggle_dropdown(e: Event): void {
+        const button = e.currentTarget as HTMLElement;
+        const content = button.nextElementSibling as HTMLElement;
+        
+        if (content?.classList.contains('hidden')) {
+            content.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('opacity-0', 'scale-95', '-translate-y-2', 'pointer-events-none');
+            }, 10);
+        } else {
+            content.classList.add('opacity-0', 'scale-95', '-translate-y-2', 'pointer-events-none');
+            setTimeout(() => content.classList.add('hidden'), 300);
+        }
+        e.stopPropagation();
+    }
+
+    function handle_sort_change(value: string): void {
+        current_sort = value;
+        filter_and_sort_quotes();
+        
+        const dropdown_btn = document.querySelector('.dropdown-button');
+        const dropdown_cnt = document.querySelector('.dropdown-content');
+        
+        if (dropdown_btn && dropdown_cnt) {
+            const button_text = sort_options.find(opt => opt.value === value)?.label ?? 'Old->New';
+            dropdown_btn.textContent = button_text;
+            
+            dropdown_cnt.innerHTML = sort_options.map(option => `
+                <button
+                    type="button"
+                    data-value="${option.value}"
+                    class="w-full text-center px-4 py-2 text-sm hover:bg-[rgba(255,255,255,0.1)] text-[rgba(255,255,255,0.8)] first:rounded-t-lg last:rounded-b-lg transition-all duration-200 ${option.value === value ? 'bg-[rgba(255,255,255,0.05)]' : ''}"
+                >
+                    ${option.label}
+                </button>
+            `).join('');
+            
+            dropdown_cnt.querySelectorAll('button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const new_value = (e.currentTarget as HTMLButtonElement).dataset.value;
+                    if (new_value) handle_sort_change(new_value);
+                });
+            });
+        }
+        
+        dropdown_cnt?.classList.add('opacity-0', 'scale-95', '-translate-y-2', 'pointer-events-none');
+        setTimeout(() => dropdown_cnt?.classList.add('hidden'), 300);
+    }
+
+    function handle_click_outside(e: Event): void {
+        if (!(e.target as HTMLElement).closest('.sort-container')) {
+            const dropdown_cnt = document.querySelector('.dropdown-content');
+            if (dropdown_cnt && !dropdown_cnt.classList.contains('hidden')) {
+                dropdown_cnt.classList.add('opacity-0', 'scale-95', '-translate-y-2', 'pointer-events-none');
+                setTimeout(() => dropdown_cnt.classList.add('hidden'), 300);
+            }
+        }
     }
 }
 

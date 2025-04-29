@@ -19,18 +19,13 @@
     <div class="w-full max-w-xl">
         <div class="m-2 flex gap-2">
             <input type="text" id="filter-input" class="flex-1 text-sm bg-[rgba(255,255,255,0.05)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur text-[0.9em] p-2 opacity-70 placeholder:text-[rgba(255,255,255,0.5)]" placeholder="Filter" autocomplete="off">
-            <select id="sort-select" class="text-sm bg-[rgba(255,255,255,0.05)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur text-[0.9em] p-2 opacity-70">
-                <option value="old" class="bg-[rgb(20,20,20)]">Old → New</option>
-                <option value="new" class="bg-[rgb(20,20,20)]">New → Old</option>
-                <option value="az" class="bg-[rgb(20,20,20)]">A → Z</option>
-                <option value="za" class="bg-[rgb(20,20,20)]">Z → A</option>
-            </select>
+            <select id="sort-select" class="text-sm bg-[rgba(255,255,255,0.05)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur text-[0.9em] p-2 opacity-70"></select>
         </div>
         <div class="flex justify-center">
-            <div id="quote-counter" class="border max-w-[100px] bg-[rgba(255,255,255,0.05)] border-white border-opacity-10 rounded backdrop-blur text-[0.9em] px-2 py-1 opacity-70 text-center">
+            <div id="quote-counter" class="border max-w-[100px] bg-[rgba(255,255,255,0.05)] border-white border-opacity-10 rounded backdrop-blur text-[0.9em] px-2 py-1 mb-2 opacity-70 text-center">
                 Quotes: <span id="quote-count">0</span>
             </div>
         </div>
-        <div id="quotes"></div>
+        <div id="quotes" class="px-4"></div>
     </div>
 </div>
