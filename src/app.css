@@ -108,10 +108,12 @@
 
     #ascii-art {
         @apply text-[0.8vh] md:text-[1.2vh] lg:text-[1.5vh] transform scale-[1] origin-center;
+        font-size: clamp(9px, 0.8vh, 1.5vh);
     }
 
     #ascii-art-small {
         @apply text-[0.6vh] md:text-[0.7vh] lg:text-[0.9vh] transform scale-[1] origin-center;
+        font-size: clamp(6px, 0.6vh, 0.9vh);
     }
 
     #button {

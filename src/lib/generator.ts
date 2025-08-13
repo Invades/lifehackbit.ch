@@ -102,19 +102,19 @@ export function init_generator(): void {
 
         container.innerHTML = `
             <div class="relative flex items-center justify-center">
-                <div class="bg-[rgba(0,0,0,0.3)] p-2 rounded-lg backdrop-blur-md border border-white border-opacity-10 flex items-center gap-2">
+                <div class="bg-[rgba(0,0,0,0.3)] p-2 rounded-lg backdrop-blur-md border border-white border-opacity-10 flex items-center gap-x-2">
                     <button
                         type="button"
-                        class="w-[150px] text-sm bg-[rgba(255,255,255,0.05)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur text-[0.9em] py-2 px-3 opacity-70 text-center"
+                        class="flex-1 basis-0 min-w-[120px] sm:flex-none sm:w-[150px] text-sm bg-[rgba(255,255,255,0.05)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur text-[0.9em] py-2 px-1 opacity-70 text-center whitespace-nowrap overflow-hidden text-ellipsis"
                         disabled
                     >
                         normal
                     </button>
-                    <div class="text-[rgba(255,255,255,0.5)] text-sm mx-1">→</div>
-                    <div class="w-[150px] relative">
+                    <div class="text-[rgba(255,255,255,0.5)] text-sm mx-1 flex-shrink-0">→</div>
+                    <div class="flex-1 basis-0 min-w-[140px] sm:flex-none sm:w-[150px] relative">
                         <button
                             type="button"
-                            class="dropdown-button w-full text-sm bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur text-[0.9em] py-2 px-3 opacity-70 text-center transition-all duration-300"
+                            class="dropdown-button w-full text-sm bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur text-[0.9em] py-2 px-3 opacity-70 text-center transition-all duration-300 whitespace-nowrap overflow-hidden text-ellipsis"
                         >
                             ${sortOptions.find(opt => opt.value === currentStyle)?.label}
                         </button>
@@ -124,7 +124,7 @@ export function init_generator(): void {
                                 <button
                                     type="button"
                                     data-value="${option.value}"
-                                    class="w-full text-center px-4 py-2 text-sm hover:bg-[rgba(255,255,255,0.1)] text-[rgba(255,255,255,0.8)] first:rounded-t-lg last:rounded-b-lg transition-all duration-200 ${currentStyle === option.value ? 'bg-[rgba(255,255,255,0.15)]' : ''}"
+                                    class="w-full text-center px-4 py-2 text-sm hover:bg-[rgba(255,255,255,0.1)] text-[rgba(255,255,255,0.8)] first:rounded-t-lg last:rounded-b-lg transition-all duration-200 ${currentStyle === option.value ? 'bg-[rgba(255,255,255,0.15)]' : ''} whitespace-nowrap overflow-hidden text-ellipsis"
                                 >
                                     ${option.label}
                                 </button>
@@ -229,4 +229,4 @@ export function init_generator(): void {
 
 if (typeof document !== 'undefined') {
     document.addEventListener("DOMContentLoaded", init_generator);
-} 
+}

@@ -37,11 +37,11 @@
     });
 </script>
 
-<div class="font-mono text-[1.5vh] text-white min-h-screen flex flex-col select-none overflow-x-hidden">
-    <div class="fixed top-2.5 right-2.5 p-2 bg-rgba(255, 255, 255, 0.05) border border-white border-opacity-10 text-[rgba(255,255,255,0.5)] rounded backdrop-blur text-[0.9em] z-50">
+<div class="font-mono text-[1.5vh] text-white min-h-screen flex flex-col select-none overflow-x-hidden pb-6 relative">
+    <div class="absolute top-2.5 right-2.5 p-2 bg-rgba(255, 255, 255, 0.05) border border-white border-opacity-10 text-[rgba(255,255,255,0.5)] rounded backdrop-blur text-sm z-[80]">
         Report issues and suggest additions <a class="underline text-white transition-all duration-300 ease-in-out text-opacity-60 hover:text-opacity-80" href="https://github.com/Invades/lifehackbit.ch/issues" target="_blank">here</a>
     </div>
-    <div class="fixed top-10 left-0 w-full flex justify-center z-50">
+    <div class="absolute top-10 left-0 w-full flex justify-center z-[70]">
         <a href="/" class="text-decoration-none" aria-label="Home">
             <div class="ascii-container">
                 <div class="glitch" id="ascii-art-small"></div>
@@ -49,8 +49,8 @@
         </a>
     </div>
 
-    <div class="flex-1 flex items-center justify-center">
-        <div class="container px-4 max-w-6xl">
+    <div class="flex-1 flex items-center justify-center mt-36 md:mt-40">
+        <div class="container px-1 max-w-6xl">
             <div class="relative z-[60] mb-6">
                 <div class="bg-[rgba(0,0,0,0.3)] p-2 rounded-lg backdrop-blur-md border border-white border-opacity-10">
                     <div class="flex items-center justify-center">
