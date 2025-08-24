@@ -1,6 +1,10 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { init_generator } from '$lib/generator';
+    import Button from '$lib/components/button.svelte';
+    import TextArea from '$lib/components/text_area.svelte';
+    import Card from '$lib/components/card.svelte';
+    import PageLayout from '$lib/components/page_layout.svelte';
 
     let generatedText: string = '';
 
@@ -37,98 +41,57 @@
     });
 </script>
 
-<div class="font-mono text-[1.5vh] text-white min-h-screen flex flex-col select-none overflow-x-hidden pb-6 relative">
-    <div class="absolute top-2.5 right-2.5 p-2 bg-rgba(255, 255, 255, 0.05) border border-white border-opacity-10 text-[rgba(255,255,255,0.5)] rounded backdrop-blur text-sm z-[80]">
-        Report issues and suggest additions <a class="underline text-white transition-all duration-300 ease-in-out text-opacity-60 hover:text-opacity-80" href="https://github.com/Invades/lifehackbit.ch/issues" target="_blank">here</a>
-    </div>
-    <div class="absolute top-10 left-0 w-full flex justify-center z-[70]">
-        <a href="/" class="text-decoration-none" aria-label="Home">
-            <div class="ascii-container">
-                <div class="glitch" id="ascii-art-small"></div>
-            </div>
-        </a>
-    </div>
-
-    <div class="flex-1 flex items-center justify-center mt-36 md:mt-40">
+<PageLayout>
+    <div class="flex-1 flex items-center justify-center">
         <div class="container px-1 max-w-6xl">
-            <div class="relative z-[60] mb-6">
-                <div class="bg-[rgba(0,0,0,0.3)] p-2 rounded-lg backdrop-blur-md border border-white border-opacity-10">
+            <div class="relative z-30 mb-6">
+                <Card className="p-2">
                     <div class="flex items-center justify-center">
                         <div id="style-select-container"></div>
                     </div>
-                </div>
+                </Card>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-[rgba(0,0,0,0.3)] p-4 rounded-lg backdrop-blur-md border border-white border-opacity-10">
+                <Card>
                     <div class="mb-2">
                         <label for="original-text" class="block text-sm text-gray-400 mb-1">original text</label>
                     </div>
-                    <textarea
+                    <TextArea
                         id="original-text"
-                        class="textbox w-full h-[300px] bg-[rgba(0,0,0,0.2)] text-white p-3 rounded-lg border border-white border-opacity-10 focus:outline-none focus:border-opacity-20 transition-all duration-200 resize-none"
                         placeholder="produce your heat quotes here"
-                    ></textarea>
-                    <div class="flex flex-wrap gap-2 mt-3">
-                        <button 
-                            class="px-3 py-1.5 text-sm bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur transition-all duration-300"
-                            on:click={() => insert_text('(◣_◢)')}>
-                            (◣_◢)
-                        </button>
-                        <button 
-                            class="px-3 py-1.5 text-sm bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur transition-all duration-300"
-                            on:click={() => insert_text('(◣︵◢)')}>
-                            (◣︵◢)
-                        </button>
-                        <button 
-                            class="px-3 py-1.5 text-sm bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur transition-all duration-300"
-                            on:click={() => insert_text('¯\\_(ツ)_/¯')}>
-                            ¯\_(ツ)_/¯
-                        </button>
-                        <button 
-                            class="px-3 py-1.5 text-sm bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur transition-all duration-300"
-                            on:click={() => insert_text('( ͡° ͜ʖ ͡°)')}>
-                            ( ͡° ͜ʖ ͡°)
-                        </button>
-                        <button 
-                            class="px-3 py-1.5 text-sm bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur transition-all duration-300"
-                            on:click={() => insert_text('ಠ_ಠ')}>
-                            ಠ_ಠ
-                        </button>
+                        className=""
+                        onInput={undefined}
+                    />
+                    <div class="flex flex-wrap gap-1 mt-3 justify-start">
+                        <Button small={true} onClick={() => insert_text('(◣_◢)')}> (◣_◢) </Button>
+                        <Button small={true} onClick={() => insert_text('(◣︵◢)')}> (◣︵◢) </Button>
+                        <Button small={true} onClick={() => insert_text('¯\\_(ツ)_/¯')}> ¯\_(ツ)_/¯ </Button>
+                        <Button small={true} onClick={() => insert_text('( ͡° ͜ʖ ͡°)')}> ( ͡° ͜ʖ ͡°) </Button>
+                        <Button small={true} onClick={() => insert_text('ಠ_ಠ')}> ಠ_ಠ </Button>
                     </div>
-                </div>
+                </Card>
 
-                <div class="bg-[rgba(0,0,0,0.3)] p-4 rounded-lg backdrop-blur-md border border-white border-opacity-10">
+                <Card>
                     <div class="mb-2 flex justify-between items-center">
                         <label for="generated-text" class="block text-sm text-gray-400">final text</label>
                     </div>
-                    <textarea
+                    <TextArea
                         id="generated-text"
-                        class="textbox w-full h-[300px] bg-[rgba(0,0,0,0.2)] text-white p-3 rounded-lg border border-white border-opacity-10 focus:outline-none focus:border-opacity-20 transition-all duration-200 resize-none"
-                        readonly
                         placeholder="your swaggy text will appear here..."
-                    ></textarea>
-                    <div class="flex flex-wrap gap-2 mt-3">
-                        <button 
-                            id="copy-button"
-                            class="px-3 py-1.5 text-sm bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur transition-all duration-300"
-                            on:click={copy_text}>
-                            copy
-                        </button>
-                        <button 
-                            id="settings-button"
-                            class="px-3 py-1.5 text-sm bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] border border-white border-opacity-10 text-[rgba(255,255,255,0.8)] rounded-lg backdrop-blur transition-all duration-300"
-                            on:click={() => {
-                                console.log('hello');
-                            }}>
-                            settings
-                        </button>
+                        readonly={true}
+                        className=""
+                        onInput={undefined}
+                    />
+                    <div class="flex flex-wrap gap-2 mt-3 justify-end">
+                        <Button small={true} id="copy-button" onClick={copy_text}>copy</Button>
+                        <Button small={true} id="settings-button" onClick={() => { console.log('wip'); }}>settings</Button>
                     </div>
-                </div>
+                </Card>
             </div>
         </div>
     </div>
-</div>
+</PageLayout>
 
 <style>
     :global(textarea::placeholder) {

@@ -1,12 +1,6 @@
 <script>
 	import '../app.css';
-    import load_ascii from '$lib/ascii';
-    import { onMount } from 'svelte';
-    import { afterNavigate } from '$app/navigation';
 	let { children } = $props();
-
-    onMount(load_ascii);
-    afterNavigate(load_ascii);
 </script>
 
 <svelte:head>

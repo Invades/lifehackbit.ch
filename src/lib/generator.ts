@@ -82,7 +82,6 @@ const character_map = {
     ' ': [' ', '　', ' ', ' ', ' ', ' ']
 };
 
-// Organize characters by style
 Object.entries(character_map).forEach(([original, variants]) => {
     if (variants[0]) character_styles.brain_damage[original] = variants[2];
     if (variants[1]) character_styles.fullwidth[original] = variants[1];

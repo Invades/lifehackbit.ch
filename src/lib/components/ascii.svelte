@@ -1,4 +1,6 @@
-const ascii_art: string = 
+<script lang="ts">
+  export let small: boolean = false;
+  export let text: string = 
 `　　　　　　　　　　．：　　　　　　　　　　　　　　　　　　　　　　　　：　　　　　　　　　　　
 　　　　　　　７　　．Ｂ：　　　　　　　　　　　　　　　　　　　　　　７Ｂ　　：ｒ　　　　　　　
 　　　　　　Ｘ７　　　ＢＢ．　　　　　　　　　　　　　　　　　　　　ｒＢＢ　　　Ｓｉ　　　　　　
@@ -11,14 +13,17 @@ const ascii_art: string =
 　　　　　　Ｍ　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　：８　　　　　　
 　　　　　　ｉＭ　　　　　　　　　　　　　ＸＸＸＸＸＸＸ　　　　　　　　　　　　．０　　　　　　
 .　 　　　　　　　 　　　　ＸＸＸＸＸＸ　　　　　　　　　　　.　`;
+</script>
 
-async function load_ascii() {
-    if (typeof window !== 'undefined') {
-        const ascii_element: HTMLElement | null = document.getElementById('ascii-art') || document.getElementById('ascii-art-small');
-        if (ascii_element) {
-            ascii_element.textContent = ascii_art;
-        }
-    }
-}
-
-export default load_ascii;
+<a
+  href="/"
+  class={`glitch whitespace-pre inline-block text-center relative z-[1] no-underline ${
+    small
+      ? "text-[clamp(5px,0.6vh,7px)] mt-6 mb-8"
+      : "text-[clamp(7px,0.8vh,20px)] md:text-[clamp(12px,1.2vh,32px)] lg:text-[clamp(16px,1.5vh,10px)]"
+  } transform scale-[1] origin-center`}
+  id={small ? "ascii-art-small" : "ascii-art"}
+  data-text={text}
+>
+  {text}
+</a>

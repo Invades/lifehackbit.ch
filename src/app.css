@@ -102,28 +102,6 @@
         animation: scrollBackground 100s linear infinite reverse;
     }
     
-    .ascii-container {
-        @apply whitespace-pre inline-block text-center relative z-[1];
-    }
-
-    #ascii-art {
-        @apply text-[0.8vh] md:text-[1.2vh] lg:text-[1.5vh] transform scale-[1] origin-center;
-        font-size: clamp(9px, 0.8vh, 1.5vh);
-    }
-
-    #ascii-art-small {
-        @apply text-[0.6vh] md:text-[0.7vh] lg:text-[0.9vh] transform scale-[1] origin-center;
-        font-size: clamp(6px, 0.6vh, 0.9vh);
-    }
-
-    #button {
-        @apply mt-[5px] inline-block py-[5px] px-[15px] text-base text-[rgb(148,148,148)] bg-[rgba(255,255,255,0.1)] border border-white border-opacity-5 rounded text-center no-underline cursor-pointer transition-all duration-200 ease-in-out backdrop-blur;
-    }
-
-    #button:hover {
-        @apply bg-[rgba(255,255,255,0.15)] opacity-100;
-    }
-
     @layer utilities {
         .scrollbar::-webkit-scrollbar {
             width: 5px;

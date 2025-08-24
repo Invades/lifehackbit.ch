@@ -222,9 +222,8 @@ export function init_quotes(): void {
     }
 
     function update_quote_count(count: number): void {
-        const quote_count_element = document.getElementById("quote-count");
-        if (quote_count_element) {
-            quote_count_element.textContent = count.toString();
+        if ((window as any).updateQuoteCount) {
+            (window as any).updateQuoteCount(count);
         }
     }
     function copy_quote(event: MouseEvent): void {

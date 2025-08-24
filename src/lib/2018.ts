@@ -1,3 +1,9 @@
+declare global {
+    interface Window {
+        showDownloadConfirmation: (filename: string) => void;
+    }
+}
+
 interface DllEntry {
     name: string;
     info: string;
@@ -14,10 +20,8 @@ async function load_2018() {
         const filterInput = document.getElementById('filter-input');
         const file_count = document.getElementById('file-count');
         const random_select_btn = document.getElementById('random-select');
-        const unattended_checkbox = document.getElementById('unattended');
-        const info_text_element = document.getElementById('info-text');
         
-        if (!file_list || !filterInput || !file_count || !random_select_btn || !unattended_checkbox || !info_text_element) return;
+        if (!file_list || !filterInput || !file_count || !random_select_btn) return;
 
         entries = data.map((item: { name: string, info: string}) => ({
             name: item.name,
@@ -66,22 +70,17 @@ async function load_2018() {
         }
 
         function update_count(count: number) {
-            if (file_count) {
-                file_count.textContent = `𝓗𝓸𝓸𝓴𝓪𝓱𝓼: ${count}`;
+            if ((window as any).updateFileCount) {
+                (window as any).updateFileCount(count);
             }
         }
 
         function select_file(index: number) {
             const selected_file = entries[index];
-            if (info_text_element) {
-                info_text_element.textContent = selected_file.info || 'No additional info available.';
-            }
-            if ((unattended_checkbox as HTMLInputElement).checked) {
+            if ((window as any).getUnattendedMode()) {
                 window.open(`https://priv9.solutions/dlls/${selected_file.name}`, '_blank');
             } else {
-                show_confirmation(`Download ${selected_file.name}?`, () => {
-                    window.open(`https://priv9.solutions/dlls/${selected_file.name}`, '_blank');
-                });
+                window.showDownloadConfirmation(selected_file.name);
             }
         }
 
@@ -149,17 +148,7 @@ async function load_2018() {
             }, interval_duration);
         });
 
-        // Add unattended checkbox functionality
-        unattended_checkbox.addEventListener('change', function(this: HTMLInputElement) {
-            const svg = document.getElementById('unattended-svg');
-            if (svg) {
-                if (this.checked) {
-                    svg.classList.add('text-red-500');
-                } else {
-                    svg.classList.remove('text-red-500');
-                }
-            }
-        });
+        // Unattended mode is now handled by the Svelte store and button
 
     } catch (error) {
         console.error('Error loading entries:', error);
@@ -167,54 +156,3 @@ async function load_2018() {
 }
 
 export default load_2018;
-
-function show_confirmation(message: string, callback: () => void): void {
-    const confirmation_element = document.getElementById('confirmation');
-    const overlay_element = document.getElementById('overlay');
-    const message_element = document.getElementById('confirmation-message');
-    const confirm_btn = document.getElementById('confirm-btn');
-    const cancel_btn = document.getElementById('cancel-btn');
-    
-    if (!confirmation_element || !overlay_element || !message_element || !confirm_btn || !cancel_btn) return;
-    
-    message_element.textContent = message;
-    
-    confirm_btn.addEventListener('click', () => close_confirmation(true));
-    cancel_btn.addEventListener('click', () => close_confirmation(false));
-    
-    overlay_element.classList.remove('hidden');
-    confirmation_element.classList.remove('hidden');
-    
-    // Force reflow
-    confirmation_element.offsetHeight;
-    
-    overlay_element.classList.add('bg-opacity-50');
-    confirmation_element.classList.add('opacity-100');
-    
-    overlay_element.addEventListener('click', (e: MouseEvent) => {
-        if (e.target === overlay_element) {
-            close_confirmation(false);
-        }
-    });
-    
-    // Declare the callback on the window object
-    (window as any).confirmation_callback = callback;
-}
-
-function close_confirmation(confirmed: boolean): void {
-    const confirmation_element = document.getElementById('confirmation');
-    const overlay_element = document.getElementById('overlay');
-    
-    if (!confirmation_element || !overlay_element) return;
-    
-    overlay_element.classList.remove('bg-opacity-50');
-    confirmation_element.classList.remove('opacity-100');
-    
-    setTimeout(() => {
-        confirmation_element.classList.add('hidden');
-        overlay_element.classList.add('hidden');
-        if (confirmed && (window as any).confirmation_callback) {
-            (window as any).confirmation_callback();
-        }
-    }, 300);
-}
