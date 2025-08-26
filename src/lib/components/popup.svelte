@@ -152,7 +152,7 @@
                     <h3 class="text-lg font-bold">About</h3>
                 </div>
                 <div class="space-y-4">
-                    <p>A collection of cheats for 2018 hvh, varying in quality/age, all link were verified at one point before being added here.</p>
+                    <p>A collection of cheats for 2018 hvh, varying in quality/age, all links were verified at one point before being added here.</p>
                     <div class="mt-4 p-3 bg-white bg-opacity-10 rounded">
                         <p class="text-sm font-bold">Use at own risk</p>
                     </div>
