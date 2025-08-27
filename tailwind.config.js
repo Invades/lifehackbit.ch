@@ -13,6 +13,7 @@ export default {
           'Fira Mono',
           'Consolas',
           'Segoe UI Symbol',
+          'monospace'
         ],
       },
     },
