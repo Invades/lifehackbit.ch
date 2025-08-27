@@ -7,7 +7,15 @@ export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
 
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        mono: [
+          'Fira Mono',
+          'Consolas',
+          'Segoe UI Symbol',
+        ],
+      },
+    },
   },
 
   plugins: [typography, forms, containerQueries]

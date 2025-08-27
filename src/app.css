@@ -66,18 +66,6 @@
         100% { color: #fff; }
     }
 
-    @keyframes scrollBackground {
-        0% {
-            transform: translate(-1%, -1%);
-        }
-        50% {
-            transform: translate(-25%, -25%);
-        }
-        100% {
-            transform: translate(1%, 1%);
-        }
-    }
-
     body::before,
     body::after {
         content: '';
@@ -87,19 +75,25 @@
         width: 200%;
         height: 200%;
         background-color: black;
-        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"%3E%3Ctext x="50%25" y="50%25" font-size="40" text-anchor="middle" fill="white" dominant-baseline="middle" font-family="monospace" transform="rotate(45 100 100)"%3E(◣_◢)%3C/text%3E%3C/svg%3E');
+        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"%3E%3Ctext x="50%25" y="50%25" font-size="40" text-anchor="middle" fill="white" dominant-baseline="middle" transform="rotate(45 100 100)"%3E(◣_◢)%3C/text%3E%3C/svg%3E');
         background-size: 150px 150px;
         background-repeat: repeat;
+        background-position: 0 0;
+        animation: scrollBackground 13s linear infinite;
         filter: blur(4px);
         z-index: -1;
+        will-change: transform;
+        transform: translateZ(0);
     }
 
-    body::before {
-        animation: scrollBackground 100s linear infinite;
-    }
 
-    body::after {
-        animation: scrollBackground 100s linear infinite reverse;
+    @keyframes scrollBackground {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: 300px 300px;
+        }
     }
     
     @layer utilities {
