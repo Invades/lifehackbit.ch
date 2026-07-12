@@ -64,11 +64,12 @@
                         onInput={undefined}
                     />
                     <div class="flex flex-wrap gap-1 mt-3 justify-start">
-                        <Button small={true} onClick={() => insert_text('(◣_◢)')}> (◣_◢) </Button>
-                        <Button small={true} onClick={() => insert_text('(◣︵◢)')}> (◣︵◢) </Button>
-                        <Button small={true} onClick={() => insert_text('¯\\_(ツ)_/¯')}> ¯\_(ツ)_/¯ </Button>
-                        <Button small={true} onClick={() => insert_text('( ͡° ͜ʖ ͡°)')}> ( ͡° ͜ʖ ͡°) </Button>
-                        <Button small={true} onClick={() => insert_text('ಠ_ಠ')}> ಠ_ಠ </Button>
+                        <Button small={true} onClick={() => insert_text('(◣_◢)')}>(◣_◢)</Button>
+                        <Button small={true} onClick={() => insert_text('(◣︵◢)')}>(◣︵◢)</Button>
+                        <Button small={true} onClick={() => insert_text('ツ')}>¯\_(ツ)_/¯</Button>
+                        <Button small={true} onClick={() => insert_text('( ͡° ͜ʖ ͡°)')}>( ͡° ͜ʖ ͡°)</Button>
+                        <Button small={true} onClick={() => insert_text('ಠ_ಠ')}>ಠ_ಠ</Button>
+                        <Button small={true} onClick={() => insert_text('♕')}>♕</Button>
                     </div>
                 </Card>
 
