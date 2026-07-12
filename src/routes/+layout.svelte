@@ -1,5 +1,6 @@
 <script>
 	import '../app.css';
+	import SettingsMenu from '$lib/components/settings_menu.svelte';
 	let { children } = $props();
 </script>
 
@@ -17,3 +18,5 @@
 <main>
 	{@render children()}
 </main>
+
+<SettingsMenu />

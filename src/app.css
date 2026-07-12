@@ -3,6 +3,10 @@
 @import 'tailwindcss/utilities';
 
 @layer components {
+    body {
+        background-color: black;
+    }
+
     .glitch {
         @apply relative text-white overflow-hidden;
         font-size: calc(0.4vw + 0.4vh);
@@ -74,7 +78,7 @@
         left: -50%;
         width: 200%;
         height: 200%;
-        background-color: black;
+        background-color: transparent;
         background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"%3E%3Ctext x="50%25" y="50%25" font-size="40" text-anchor="middle" fill="white" dominant-baseline="middle" transform="rotate(45 100 100)"%3E(◣_◢)%3C/text%3E%3C/svg%3E');
         background-size: 150px 150px;
         background-repeat: repeat;
@@ -85,6 +89,26 @@
         will-change: transform;
         transform: translateZ(0);
         overflow: hidden;
+        opacity: var(--background-opacity, 0.3);
+        transition: opacity 200ms ease;
+    }
+
+    html.performance-mode body::before,
+    html.performance-mode body::after {
+        animation: none;
+        will-change: auto;
+    }
+
+    html.performance-mode .backdrop-blur,
+    html.performance-mode .backdrop-blur-md {
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+        background-color: rgb(18, 18, 18) !important;
+    }
+
+    html.performance-mode :is(.backdrop-blur, .backdrop-blur-md):is(button, a, input, select, .cursor-pointer, .dropdown-button):not(:disabled):hover,
+    html.performance-mode :is(.backdrop-blur, .backdrop-blur-md):is(button, a, input, select, .cursor-pointer, .dropdown-button):not(:disabled):focus-visible {
+        background-color: rgb(32, 32, 32) !important;
     }
 
 

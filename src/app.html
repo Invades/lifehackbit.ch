@@ -4,6 +4,19 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script>
+			try {
+				const settings = JSON.parse(localStorage.getItem('site-settings') || '{}');
+				if (typeof settings.backgroundOpacity === 'number') {
+					const opacity = Math.min(100, Math.max(0, settings.backgroundOpacity)) / 100;
+					document.documentElement.style.setProperty('--background-opacity', String(opacity));
+				}
+				if (settings.performanceMode === true) {
+					document.documentElement.classList.add('performance-mode');
+				}
+			} catch (_) {
+			}
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

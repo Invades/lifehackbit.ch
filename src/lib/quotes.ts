@@ -235,9 +235,14 @@ export function init_quotes(): void {
 
         navigator.clipboard.writeText(quote_text).then(() => {
             const original_background = target.style.backgroundColor;
-            target.style.backgroundColor = "rgba(0, 255, 0, 0.2)";
+            const original_priority = target.style.getPropertyPriority("background-color");
+            target.style.setProperty("background-color", "rgba(0, 255, 0, 0.2)", "important");
             setTimeout(() => {
-                target.style.backgroundColor = original_background;
+                if (original_background) {
+                    target.style.setProperty("background-color", original_background, original_priority);
+                } else {
+                    target.style.removeProperty("background-color");
+                }
             }, 500);
         }).catch(error => {
             console.error("Failed to copy text: ", error);
