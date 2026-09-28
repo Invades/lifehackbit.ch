@@ -42,7 +42,7 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <button
-    class="settings-cog fixed bottom-3 right-3 z-[60] flex h-8 w-8 items-center justify-center rounded border border-white border-opacity-10 bg-[rgba(255,255,255,0.05)] text-[rgba(255,255,255,0.5)] backdrop-blur transition-colors duration-300 ease-in-out hover:bg-[rgba(255,255,255,0.1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+    class="settings-cog fixed bottom-14 right-3 z-[60] flex h-8 w-8 items-center justify-center rounded border border-white border-opacity-10 bg-[rgba(255,255,255,0.05)] text-[rgba(255,255,255,0.5)] backdrop-blur transition-colors duration-300 ease-in-out hover:bg-[rgba(255,255,255,0.1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
     type="button"
     aria-label="Open settings"
     aria-haspopup="dialog"

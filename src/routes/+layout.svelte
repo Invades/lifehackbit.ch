@@ -1,6 +1,7 @@
 <script>
 	import '../app.css';
 	import SettingsMenu from '$lib/components/settings_menu.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 	let { children } = $props();
 </script>
 
@@ -15,8 +16,11 @@
 	<title>LIFEEEHAAACK BITCH!!!</title>
 </svelte:head>
 
-<main>
-	{@render children()}
-</main>
+<div class="min-h-screen flex flex-col">
+	<main class="flex-1 pb-16">
+		{@render children()}
+	</main>
+	<Footer />
+</div>
 
 <SettingsMenu />

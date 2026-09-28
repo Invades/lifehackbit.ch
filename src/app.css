@@ -2,6 +2,13 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+:root {
+    --color-bg-secondary: #141414;
+    --color-text-muted: #a3a3a3;
+    --color-border: #262626;
+    --color-accent: #ffffff;
+}
+
 @layer components {
     body {
         background-color: black;
