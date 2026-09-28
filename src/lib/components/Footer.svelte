@@ -7,7 +7,7 @@
 		'/footer/scripting.svg',
 		'/footer/blank.svg'
 	];
-	const sequence = [...logos, ...logos];
+	const sequence = Array.from({ length: 9 }, () => logos).flat();
 </script>
 
 <footer
@@ -18,7 +18,7 @@
 			{#each [0, 1] as copy (copy)}
 				<span class="marquee-group">
 					{#each sequence as logo}
-						<span class="marquee-slot"><img class="marquee-logo" src={logo} alt="" draggable="false" /></span>
+						<img class="marquee-logo" src={logo} alt="" draggable="false" />
 					{/each}
 				</span>
 			{/each}
@@ -30,7 +30,7 @@
 	.marquee-track {
 		display: flex;
 		width: max-content;
-		animation: marquee 40s linear infinite;
+		animation: marquee 90s linear infinite;
 		will-change: transform;
 	}
 
@@ -38,25 +38,17 @@
 		display: flex;
 		flex: none;
 		align-items: center;
-		justify-content: space-around;
-		gap: 1rem;
+		justify-content: flex-start;
+		gap: 6px;
 		box-sizing: border-box;
-		min-width: 100vw;
 		width: max-content;
-		padding-inline: 0.5rem;
+		padding-inline: 3px;
 		white-space: nowrap;
 	}
 
-	.marquee-slot {
-		display: flex;
-		flex: none;
-		align-items: center;
-		justify-content: center;
-		width: 96px;
-		height: 24px;
-	}
-
 	.marquee-logo {
+		display: block;
+		flex: none;
 		width: auto;
 		height: 24px;
 		max-width: 96px;
